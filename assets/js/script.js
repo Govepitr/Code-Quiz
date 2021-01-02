@@ -8,10 +8,16 @@ console.log(timerCountdown);
 
 
 
+//Countdown Timer
+
 var countdown = function() {
-  console.log("hello");
-  seconds--
-  timerCountdown.textContent = "Time:" + seconds
+  timerCountdown.textContent = "Time:" + seconds;
+  console.log("seconds");
+  seconds--;
+    if(seconds === -1){
+    console.log("timeisup");
+    clearInterval(timer);
+  };
 };
 
-timer = setInterval(countdown, 1000)
+var timer = setInterval(countdown, 1000)
