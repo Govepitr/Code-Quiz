@@ -1,6 +1,6 @@
 var timerCountdown = document.querySelector("#time");
 var timer;
-var seconds = 60;
+var seconds = 75;
 console.log(timerCountdown);
 
 
