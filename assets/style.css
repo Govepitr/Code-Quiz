@@ -1,0 +1,29 @@
+:any-link {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  flex-flow: row;
+  padding: 2px;
+  justify-content: space-between;
+  flex-direction: row;
+  height: fit-content;
+}
+
+a {
+  margin: 10px 0px 0px 15px;
+  font-size: 25px;
+}
+
+header h3 {
+  margin: 10px 25px 0px 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;  
+  padding: 15%;
+  box-sizing: border-box;
+}
