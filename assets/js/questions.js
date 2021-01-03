@@ -25,3 +25,10 @@ var questions = [
     correct:"4. console log"
   },
 ]
+
+
+
+
+
+
+

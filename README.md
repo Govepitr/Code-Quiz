@@ -27,4 +27,4 @@
 
 ---
 
-![Code-Quiz Screenshot]https://github.com/Govepitr/Code-Quiz/blob/features/javascript/assets/images/Screenshot.png?raw=true "Code Quiz Screenshot")
+![Code-Quiz Screenshot](https://github.com/Govepitr/Code-Quiz/blob/features/javascript/assets/images/Screenshot.png?raw=true "Code Quiz Screenshot")

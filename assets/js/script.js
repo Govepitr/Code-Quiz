@@ -1,18 +1,50 @@
-var timerCountdown = document.querySelector("#time");
+var score = 0;
+var currentQuestion = -1;
 var timer;
-var seconds = 75;
-console.log(timerCountdown);
+var timeLeft = 0;
+
 
 //Countdown Timer
 
-var countdown = function() {
-  timerCountdown.textContent = "Time:" + seconds;
-  seconds--;
-    if(seconds === -1){
-    clearInterval(timer);
-    timerCountdown.textContent = "Time is up!"
-  };
-};
+function start() {
+
+  timeLeft = 75;
+  document.getElementById("timeLeft").innerHTML = timeLeft;
+
+  timer = setInterval(function) {
+    timeLeft--;
+    document.getElementById("timeLeft").innerHTML = timeLeft;
+  //The endGame function will begin at any point that the timer has reached 0
+    if(timeLeft <= 0) {
+        clearInterval(timer);
+        endGame(;)
+    }
+  } var timer = setInterval(countdown, 1000);
+
+  next();
+
+}
+
+// Timer has been stopped, so the game has ended
+function endGame() {
+  clearInterval(timer);
+
+  
+
+
+
+}
+
+
+
+// var countdown = function() {
+//   timerCountdown.textContent = "Time:" + seconds;
+//   seconds--;
+//     if(seconds === -1){
+//     clearInterval(timer);
+//     timerCountdown.textContent = "Time is up!"
+//   };
+// };
 
 
 //function to start the quiz
@@ -27,4 +59,3 @@ var countdown = function() {
 
 ///quiz end function (restart options display highscore)
 
-var timer = setInterval(countdown, 1000)
