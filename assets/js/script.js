@@ -15,15 +15,16 @@ var countdown = function() {
 };
 
 
-// Function for truthy statetments in quiz
+//function to start the quiz
 
+//function to get the question
 
-// Function for falsey statements in quiz
+//function to validate the correct answer on click
 
+//end quiz function(if time runs outerHeight, hide the questions, show the end screenfollowed by the high score)
 
-// Function for entering intials for high score
+// save high score
 
-// Funtion 
-
+///quiz end function (restart options display highscore)
 
 var timer = setInterval(countdown, 1000)
