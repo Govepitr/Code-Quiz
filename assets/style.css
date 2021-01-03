@@ -2,6 +2,10 @@
   text-decoration: none;
 }
 
+body {
+  margin: 10px 15px;
+}
+
 header {
   display: flex;
   flex-flow: row;
@@ -9,21 +13,27 @@ header {
   justify-content: space-between;
   flex-direction: row;
   height: fit-content;
-}
-
-a {
-  margin: 10px 0px 0px 15px;
-  font-size: 25px;
-}
-
-header h3 {
-  margin: 10px 25px 0px 0px;
   font-family: 'Roboto', sans-serif;
 }
+
+/* a {  
+  font-size: 25px;
+} */
 
 main {
   display: flex;
   flex-direction: column;  
-  padding: 15%;
+  padding: auto;
+  margin: 10px auto;
   box-sizing: border-box;
+  height: auto;
+  max-width: 700px;
+  min-width: 375px;  
+}
+
+h1 {
+  height: auto;
+  width: auto;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }

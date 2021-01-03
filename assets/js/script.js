@@ -3,11 +3,6 @@ var timer;
 var seconds = 75;
 console.log(timerCountdown);
 
-
-
-
-
-
 //Countdown Timer
 
 var countdown = function() {
