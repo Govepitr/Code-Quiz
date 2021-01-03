@@ -27,4 +27,4 @@
 
 ---
 
-<!--![Code-Quiz Screenshot](direct github path to screenshot after you push image to main repo @end?raw=true "<name of screenshot file inside quotes>")
+![Code-Quiz Screenshot]https://github.com/Govepitr/Code-Quiz/blob/features/javascript/assets/images/Screenshot.png?raw=true "Code Quiz Screenshot")
