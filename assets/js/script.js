@@ -7,12 +7,23 @@ console.log(timerCountdown);
 
 var countdown = function() {
   timerCountdown.textContent = "Time:" + seconds;
-  console.log("seconds");
   seconds--;
     if(seconds === -1){
-    console.log("timeisup");
     clearInterval(timer);
+    timerCountdown.textContent = "Time is up!"
   };
 };
+
+
+// Function for truthy statetments in quiz
+
+
+// Function for falsey statements in quiz
+
+
+// Function for entering intials for high score
+
+// Funtion 
+
 
 var timer = setInterval(countdown, 1000)

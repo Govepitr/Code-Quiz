@@ -6,26 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coding Quiz Challenge</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-  <header id="header">
-    <h3>
-      <a href="#">View High Scores</a>
-    </h3>
-    <h3 id="time">Time: 0</h3>
+  <header>
+    <nav id="nav-wrap">
+      <div id="hi-score">
+        <h3 id="hi-score-title"><a href="#">View high scores</a></h3>
+      </div>
+      <div>
+        <h3 id="time">Time: 0</h3>
+      </div>
+    </nav>
+  </header>
 
-    </header>
-  <main id="quiz">
-    <h1>
-      Coding Quiz Challenge
-    </h1>
-    <p>
-      Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-    </p>
-    <button id="start-quiz">Start Quiz</button>
+  <main>
+    <section id="quiz">
+    <!-- Quiz question section -->
+      <div id="quiz-q">
+        <h1>
+          Coding Quiz Challenge
+        </h1>
+        <p>
+          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <button id="btn" class="quiz-btn">Start Quiz</button>
+      </div>
+      
+      <!-- Quiz answer section -->
+      <div id="answer">
+        <ul id="opt"></ul>
+      </div>
 
+      <!-- Quiz Answer key section -->
+      <div id="key" class="key">
+        <p>answer placeholder</p>
+      </div> 
+    </section>
   </main>
   
   <script src="./assets/js/script.js"></script>
