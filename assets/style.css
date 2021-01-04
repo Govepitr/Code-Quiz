@@ -2,7 +2,7 @@
   --primary-color: rgb(100, 6, 177);
   --secondary-color: rgb(207, 99, 240);
   --background-color: rgb(255, 255, 255);
-  --accent-color: rgba(161, 159, 159, 0.794);
+  --accent-color: rgba(162, 160, 160, 0.792);
   --black-color: rgb(2, 1, 1); 
 }
 
@@ -67,5 +67,5 @@ margin-top:5px;
 color: var(--accent-color);
 font-style:italic;
 font-size: 1.5rem;
-border-top: 1px solid var(--accent-color);
+/* border-top: 1px solid var(--accent-color); */
 }
