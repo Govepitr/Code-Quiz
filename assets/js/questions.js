@@ -1,3 +1,12 @@
+// The below question object fits into the standard Obj template as such
+//  var X<object's name> = [{
+//      quizQuestion: "<whatever question you want>",
+//      answers: ["<whatever>", "<answers>", "<you>", "<desire>"]<-----the brackets are to use for multiple parts of this section... AKA a string>,
+//      correct: "<whatever the answer is>" (no comma @the end)
+//  }
+//  ]
+
+
 var questions = [{
 
   quizQuestion: "Arrays in JavaScript can be used to store _____.",
