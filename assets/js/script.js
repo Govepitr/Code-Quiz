@@ -1,6 +1,6 @@
 // variables that keep track of the state for the quiz
-var currrentQuestionIndex = 0;
-var time = questions.length * 15;
+var currentQuestionIndex = 0;
+var time = 75;
 var timerId;
 
 // DOM reference elements
@@ -9,19 +9,29 @@ var timeEl = document.querySelector("#count-down-timer");
 var startBtn = document.querySelector("#start-quiz-btn");
 var submitBtn = document.querySelector("#initials-submit-button");
 var titleScreen = document.querySelector("#quiz-question");
-var quizScreen = document.querySelector("#answer");
+var quizScreen = document.querySelector("#quizscreen");
 var highScoreScreen = document.querySelector("#highscore");
 var highScoreDisplay = document.querySelector("#highscore-section");
 var initialsEl = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#correct-wrong");
-
+var highscoreScreen = document.querySelector("#highscore")
 var questionsEl = document.querySelector("#questions");
-var choicesEl = document.querySelector("#answers");
+var answerEl = document.querySelector("#answers");
+
+
+function pageLoad() {
+  //only show start page. Hide other content.
+  highscoreScreen.setAttribute("class", "hide");
+  quizScreen.setAttribute("class", "hide");
+}
+
 
 //create functions to start the game
 function startQuiz() {
+  debugger
   //hide the start screen after beginning quiz
   titleScreen.setAttribute("class", "hide");
+  highscoreScreen.setAttribute("class", "hide");
 
   //un-hide questions section
   quizScreen.setAttribute("class", "show");
@@ -49,36 +59,36 @@ function tick() {
 
   function getQuestion() {
     // pull current question from array
-    var currentQuestion = questions[currrentQuestionIndex];
+    var currentQuestion = questions[currentQuestionIndex];
 
-    //update the title w/the current question
-    var titleEl = document.getElementById("questions")
-    titleEl.textContent = currentQuestion.title;
+    //update the P element w/the current question
+    var titleEl = document.getElementById("quiz-question")
+    titleEl.textContent = currentQuestion.quizQuestion;
 
-    //remove old question and choices
-    choicesEl.innerHTML = "";
+    // //remove old question and choices
+    // answerEl.innerHTML = "";
 
-    //loop choices
-    currentQuestion.choices.forEach(function(choice, I) {
+    //loop answers
+    currentQuestion.answers.forEach(function(answer, i) {
       //create buttons for each choices
-      var choiceNode = document.createElement("button");
-      choiceNode.setAttribute("class", "choice");
-      choiceNode.setAttribute("value", choice);
+      var answerNode = document.createElement("button");
+      answerNode.setAttribute("class", "btn");
+      answerNode.setAttribute("value", answer);
 
-      choiceNode.textContent = i + 1 + ". " + choice;
+      answerNode.textContent = i + 1 + ". " + answer;
 
-      //add click even listener to every choice
-      choiceNode.onClick = questionClick;
+      //add click even listener to every answer
+      answerNode.onclick = questionClick;
 
       // load questions to page
-      choices.appendChild(choiceNode);
+      answerEl.appendChild(answerNode);
     });
   }
 
 // click on question to generate a new question, end the quiz if on last question, but also deduct time for incorrect selections
   function questionClick() {
     //verify if selection is incorrect
-    if (this.value !== questions[currrentQuestionIndex].answer) {
+    if (this.value !== questions[currentQuestionIndex].correct) {
       //remove time
       time -= 15;
 
@@ -96,16 +106,16 @@ function tick() {
     }
 
     // keep correct/incorrect feedback on page for a second
-    feedbackEl.setAttribute("class", "feedback");
+    feedbackEl.setAttribute("class", "key");
     setTimeout(function() {
-      feedbackEl.setAttribute("class", "feedback hide");
+      feedbackEl.setAttribute("class", "key hide");
     }, 1000);
 
     // next question will appear via index
-    currrentQuestionIndex++;
+    currentQuestionIndex++;
 
     //verify hopw many questions remain
-    if (currrentQuestionIndex === questions.length) {
+    if (currentQuestionIndex === questions.length) {
       quizEnd();
     } else {
       getQuestion();
@@ -161,10 +171,15 @@ function checkForEnter(event) {
   }
 }
 
-//the user clicks the button for initials submission
-submitBtn.onclick() = saveHighscore;
-
 //or they click to start the quiz
-startBtn.onClick() = startQuiz;
+startBtn.onclick = startQuiz;
 
-initialsEl.onkeyup() = checkForEnter;
+
+//the user clicks the button for initials submission
+submitBtn.onclick = saveHighscore;
+
+
+
+initialsEl.onkeyup = checkForEnter;
+
+pageLoad();
