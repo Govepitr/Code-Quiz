@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coding Quiz Challenge</title>
+  <title>Code Quiz</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body>
+
   <header>
-    <nav id="nav-wrap">
-      <div id="hi-score">
-        <h3 id="hi-score-title"><a href="#">View high scores</a></h3>
+    <nav class="nav-wrapper">
+      <div class="hi-score">
+        <h3 id="view-highscores" class="hi-score-title" onclick="printHighscores()">View high scores</h3>
       </div>
       <div>
-        <h3 id="time">Time: 0</h3>
+        <h3 class="time">Time: <span id="time">0</span></h3>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section id="quiz">
-    <!-- Quiz question section -->
-      <div id="quiz-q">
+  <main >
+    <section class="quiz-wrapper">
+      <!-- Quiz Question & Quiz Start Button (will disable this once quiz starts and use bottom section)-->
+      <div id="start-quiz" class="start-quiz" >
         <h1>
           Coding Quiz Challenge
         </h1>
+        <!-- Opening page info -->
         <p>
-          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds! Correct answers will increate your score/time by 10 seconds!
         </p>
-        <button id="btn" class="quiz-btn">Start Quiz</button>
-      </div>
-      
-      <!-- Quiz answer section -->
-      <div id="answer">
-        <ul id="opt"></ul>
+        <button id="start-quiz-btn" class="startbtn">Start Quiz</button>
       </div>
 
-      <!-- Quiz Answer key section -->
-      <div id="key" class="key">
-        <p>answer placeholder</p>
-      </div> 
+      <!-- Quiz Questions after it starts Quiz Answer Buttons -->
+      <div id="quiz-section">
+        <div class= "question-mini">
+          <div class="questions">
+            <h1 id="quiz-question"></h1>
+          </div>
+        </div>
+
+        <!-- Quiz Answer & Key Section -->
+        <div class= "question-mini">
+          <div id="answers"></div>
+          <div id="key" class="key"></div> 
+        </div>
+      </div>
+
+      <!-- High Score End Screen -->
+      <div class="highscore" id="highscore">
+        <h2>All done!</h2>
+        <h3>Your final score is <span id="final-score">0</span></h3>
+        <label for="initials-area">Enter initials:</label>
+        <input type="text" name="initials-area" maxlength="4" id="initials">
+        <button id="initials-submit-button" type="submit" class="btn">Submit</button>
+      </div>
+
+      <!-- Highscore Display Screen -->
+      <div id="highscore-display">
+        <div id="scores">
+          <h2>Highscores:</h2>
+          <ol id="display-scores"></ol>
+          <a href="./index.html"><button id="return-btn" class="startbtn">Play Again</button></a>
+          <button id="clear-btn" class="startbtn">Clear Highscores</button>
+        </div>
+      </div>
+
+
+
     </section>
   </main>
-  
+
+  <script src="./assets/js/questions.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
