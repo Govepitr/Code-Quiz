@@ -14,22 +14,25 @@ var timer;
 // Variables for DOM references..........................................................................................................................
 
 var timerCountdown = document.querySelector("#time");
-var startQuizBtn = document.querySelector('#start-quiz-btn');
+var startQuizBtn = document.querySelector("#start-quiz-btn");
 var initialBtn = document.querySelector("#initials-submit-button");
-var titleScreen = document.querySelector('#start-quiz');
-var quizScreen = document.querySelector('#quiz-section');
+var titleScreen = document.querySelector("#start-quiz");
+var quizScreen = document.querySelector("#quiz-section");
 var initialsEl = document.querySelector("#initials");
 var feedbackKey = document.querySelector("#key");
 var answersEl = document.querySelector("#answers");
 var highscoreScreen = document.querySelector("#highscore")
+var scoreDisplay = document.querySelector("#highscore-display")
+var viewHighScores = document.querySelector("#view-highscores")
 
 function pageLoad() {
   //only show start page. Hide other content.
   highscoreScreen.setAttribute("class", "hide");
   quizScreen.setAttribute("class", "hide");
+  scoreDisplay.setAttribute("class", "hide");
 
   if (startQuiz == true){
-    
+    return;
   }
 
 }
@@ -43,6 +46,7 @@ function startQuiz() {
   //hide start screen and high score screen
   titleScreen.setAttribute("class", "hide");
   highscoreScreen.setAttribute("class", "hide");
+  scoreDisplay.setAttribute("class", "hide");
 
   //unhide questions section 
   quizScreen.setAttribute("class", "show");
@@ -115,7 +119,7 @@ function questionClick() {
     timerCountdown.textContent = time;
 
     feedbackKey.textContent = "Wrong!";
-  } else if (this.value == questions[currentQuestionIndex].correct) {
+  } if (this.value == questions[currentQuestionIndex].correct) {
     //Give extra time
     time += 10;
 
@@ -184,9 +188,9 @@ function saveHighscore () {
    highscores.push(newScore);
    window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
-   //redirect to next page
-   window.location.href = "highscore.html";
+   
   }
+  printHighscores();
 }
 
 function checkForEnter(event) {
@@ -195,13 +199,39 @@ function checkForEnter(event) {
   }
 }
 
-// // user clicks button to submit initials
-// initialBtn.addEventListener("click", saveHighscore())
+function printHighscores() {
+  //redirect to display screen
+  titleScreen.setAttribute("class", "hide");
+  scoreDisplay.setAttribute("class", "show");
+  highscoreScreen.setAttribute("class", "hide");
 
-// //user clicks button to start quiz 
-// startQuizBtn.addEventListener("click", startQuiz())
+  // either get scores from localstorage or set to empty array
+  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-// initials.addEventListener("onkeyup", checkForEnter())
+  // sort highscores by score property in descending order
+  highscores.sort(function(a, b) {
+    return b.score - a.score;
+  });
+
+  highscores.forEach(function(score) {
+    // create li tag for each high score
+    var liTag = document.createElement("li");
+    liTag.textContent = score.initials + " - " + score.score;
+
+    // display on page
+    var olEl = document.getElementById("display-scores");
+    olEl.appendChild(liTag);
+  });
+}
+
+function clearHighscores() {
+  window.localStorage.removeItem("highscores");
+  window.location.reload();
+}
+
+document.getElementById("clear-btn").onclick = clearHighscores;
+
+
 
 // user clicks button to submit initials
 initialBtn.onclick = saveHighscore;
