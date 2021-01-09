@@ -23,8 +23,12 @@ var feedbackKey = document.querySelector("#key");
 var answersEl = document.querySelector("#answers");
 var highscoreScreen = document.querySelector("#highscore")
 var scoreDisplay = document.querySelector("#highscore-display")
-var viewHighScores = document.querySelector("#view-highscores")
+var hideHighScoresLink = document.querySelector("#view-highscores")
+var hideTime = document.querySelector(".time")
 
+
+
+// function to hide uneeded screens on load screen
 function pageLoad() {
   //only show start page. Hide other content.
   highscoreScreen.setAttribute("class", "hide");
@@ -104,6 +108,7 @@ function getQuestion() {
   
 };
 
+// function to increase or decrease time with quesiton answer button click
 function questionClick() {
   // check if guessed wrong
   
@@ -199,11 +204,14 @@ function checkForEnter(event) {
   }
 }
 
+// function to display high scores 
 function printHighscores() {
   //redirect to display screen
   titleScreen.setAttribute("class", "hide");
   scoreDisplay.setAttribute("class", "show");
   highscoreScreen.setAttribute("class", "hide");
+  hideHighScoresLink.setAttribute("class", "hide");
+  hideTime.setAttribute("class", "hide");
 
   // either get scores from localstorage or set to empty array
   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
@@ -224,6 +232,7 @@ function printHighscores() {
   });
 }
 
+// function to clear high scores
 function clearHighscores() {
   window.localStorage.removeItem("highscores");
   window.location.reload();
