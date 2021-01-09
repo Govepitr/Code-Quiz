@@ -19,11 +19,12 @@
 
 ### GitHub Repo
 
->
+>https://github.com/Govepitr/Code-Quiz.git
 
 ### GitHub Live Site
 
-> 
+> https://govepitr.github.io/Code-Quiz/
+
 
 ---
 
