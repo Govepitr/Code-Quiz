@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coding Quiz Challenge</title>
+  <title>Code Quiz</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body>
+
   <header>
     <nav class="nav-wrapper">
-      <div id="hi-score">
-        <h3 id="hi-score-title"><a href="./highscore.html">View high scores</a></h3>
+      <div class="hi-score">
+        <h3 class="hi-score-title"><a href="#">View high scores</a></h3>
       </div>
       <div>
-        <h3>Time: <span id="count-down-timer">0</span>  </h3>
+        <h3 class="time">Time: <span id="time">0</span></h3>
       </div>
     </nav>
   </header>
@@ -34,34 +35,36 @@
         </p>
         <button id="start-quiz-btn" class="startbtn">Start Quiz</button>
       </div>
+
       <!-- Quiz Questions after it starts Quiz Answer Buttons -->
-      <div id="quizscreen">
-        <div class="questions">
-          <h1 id="quiz-question"></h1>
-          <div id="answers">
-            
+      <div id="quiz-section">
+        <div class= "question-mini">
+          <div class="questions">
+            <h1 id="quiz-question"></h1>
           </div>
-        <!-- Quiz Answer Key Section -->
-          <div id="key" class="key">
-            <div id="correct-wrong"></div>
-          </div>
+        </div>
+
+        <!-- Quiz Answer & Key Section -->
+        <div class= "question-mini">
+          <div id="answers"></div>
+          <div id="key" class="key"></div> 
         </div>
       </div>
+
       <!-- High Score End Screen -->
-      <section>
-        <div class="highscore" id="highscore">
-          <h3>Your final score is <span id="final-score">0</span></h3>
-            <label for="initials-area">Enter initials:</label>
-            <input type="text" name="initials-area" maxlength="3" id="initials">
-          <button id="initials-submit-button" type="submit">Submit</button>
-        </div>
-      </section>
+      <div class="highscore" id="highscore">
+        <h2>All done!</h2>
+        <h3>Your final score is <span id="final-score">0</span></h3>
+        <label for="initials-area">Enter initials:</label>
+        <input type="text" name="initials-area" maxlength="4" id="initials">
+        <button id="initials-submit-button" type="submit">Submit</button>
+      </div>
+
+      
     </section>
   </main>
-  
+
   <script src="./assets/js/questions.js"></script>
   <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/scoreboard.js"></script>
-
 </body>
 </html>

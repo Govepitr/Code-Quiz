@@ -1,185 +1,215 @@
-// variables that keep track of the state for the quiz
+/* GLOBAL VARIABLES */ 
+
+// Variables to keep track of quiz state..................................................................................................................
+
+// index's for question loop
 var currentQuestionIndex = 0;
+// var ref in timerCountdown event (start timer at 75s)
 var time = 75;
-var timerId;
+var timer;
 
-// DOM reference elements
 
-var timeEl = document.querySelector("#count-down-timer");
-var startBtn = document.querySelector("#start-quiz-btn");
-var submitBtn = document.querySelector("#initials-submit-button");
-var titleScreen = document.querySelector("#quiz-question");
-var quizScreen = document.querySelector("#quizscreen");
-var highScoreScreen = document.querySelector("#highscore");
-var highScoreDisplay = document.querySelector("#highscore-section");
+
+
+// Variables for DOM references..........................................................................................................................
+
+var timerCountdown = document.querySelector("#time");
+var startQuizBtn = document.querySelector('#start-quiz-btn');
+var initialBtn = document.querySelector("#initials-submit-button");
+var titleScreen = document.querySelector('#start-quiz');
+var quizScreen = document.querySelector('#quiz-section');
 var initialsEl = document.querySelector("#initials");
-var feedbackEl = document.querySelector("#correct-wrong");
+var feedbackKey = document.querySelector("#key");
+var answersEl = document.querySelector("#answers");
 var highscoreScreen = document.querySelector("#highscore")
-var questionsEl = document.querySelector("#questions");
-var answerEl = document.querySelector("#answers");
-
 
 function pageLoad() {
   //only show start page. Hide other content.
   highscoreScreen.setAttribute("class", "hide");
   quizScreen.setAttribute("class", "hide");
+
+  if (startQuiz == true){
+    
+  }
+
 }
 
 
-//create functions to start the game
+
+/* GLOBAL FUNCTIONS */
+
+// start quiz/game function 
 function startQuiz() {
-  debugger
-  //hide the start screen after beginning quiz
+  //hide start screen and high score screen
   titleScreen.setAttribute("class", "hide");
   highscoreScreen.setAttribute("class", "hide");
 
-  //un-hide questions section
+  //unhide questions section 
   quizScreen.setAttribute("class", "show");
 
-  //timer begins
-  timerId = setInterval(tick, 1000);
+  // start timer 
+  timer = setInterval(countdown, 1000);
 
-  //show beginning of timer
-  timeEl.textContent = time;
+  // show starting time
+  var time = 75;
+  timerCountdown.textContent = time;
 
   getQuestion();
 }
 
-// create a second taken off of the clock
-function tick() {
-  //timne being updated
+// timer countdowns one second at a time function
+function countdown() {
   time--;
-  timeEl.textContent = time;
+  timerCountdown.textContent = time;
 
-  //veriify if time has run out
+  // check if user ran out of time
   if (time <= 0) {
     quizEnd();
   }
 }
 
-  function getQuestion() {
-    // pull current question from array
-    var currentQuestion = questions[currentQuestionIndex];
 
-    //update the P element w/the current question
-    var titleEl = document.getElementById("quiz-question")
-    titleEl.textContent = currentQuestion.quizQuestion;
+// function to get the question
+function getQuestion() {
+  var currentQuestion = questions[currentQuestionIndex];
+  console.log(currentQuestion)
 
-    // //remove old question and choices
-    // answerEl.innerHTML = "";
+  // update title with current questions
+  var titleEl = document.getElementById("quiz-question");
+  titleEl.textContent = currentQuestion.quizQuestion;
 
-    //loop answers
-    currentQuestion.answers.forEach(function(answer, i) {
-      //create buttons for each choices
-      var answerNode = document.createElement("button");
-      answerNode.setAttribute("class", "btn");
-      answerNode.setAttribute("value", answer);
+  // clear out any old question choices
+  answersEl.innerHTML = "";
 
-      answerNode.textContent = i + 1 + ". " + answer;
+  // Loop over choices
+  currentQuestion.answers.forEach(function(answer, i) {
+    // create new button for each choice
+    var answerNode = document.createElement("button");
+    answerNode.setAttribute("class", "btn");
+    answerNode.setAttribute("value", answer)
 
-      //add click even listener to every answer
-      answerNode.onclick = questionClick;
+    answerNode.textContent = i +1 + ". " + answer;
 
-      // load questions to page
-      answerEl.appendChild(answerNode);
-    });
-  }
+    // attach click event listener to each answer
+    answerNode.onclick = questionClick;
 
-// click on question to generate a new question, end the quiz if on last question, but also deduct time for incorrect selections
-  function questionClick() {
-    //verify if selection is incorrect
-    if (this.value !== questions[currentQuestionIndex].correct) {
-      //remove time
-      time -= 15;
+    // display on the page 
+    answersEl.appendChild(answerNode);
+  });
+   
+  
+};
 
-      if (time < 0) {
-        time = 0;
-      }
+function questionClick() {
+  // check if guessed wrong
+  
+  if (this.value !== questions[currentQuestionIndex].correct) {
+    //penalize time
+    time -= 10;
 
-      //update time text on page
-      timeEl.textContent = time;
-
-      feedbackEl.textContent = "Oof, sorry. I need to take some time away now. That was incorrect!";
-    } else {
-
-      feedbackEl.textContent = "Most excellent, that's correct!";
+    if (time < 0) {
+      time = 0;
     }
 
-    // keep correct/incorrect feedback on page for a second
-    feedbackEl.setAttribute("class", "key");
-    setTimeout(function() {
-      feedbackEl.setAttribute("class", "key hide");
-    }, 1000);
+    // display new time on page
+    timerCountdown.textContent = time;
 
-    // next question will appear via index
-    currentQuestionIndex++;
+    feedbackKey.textContent = "Wrong!";
+  } if (this.value == questions[currentQuestionIndex].correct) {
+    //Give extra time
+    time += 10;
 
-    //verify hopw many questions remain
-    if (currentQuestionIndex === questions.length) {
-      quizEnd();
-    } else {
-      getQuestion();
+    if (time < 0) {
+      time = 0;
     }
+
+    // display new time on page
+    timerCountdown.textContent = time;
+    feedbackKey.textcontent = "Correct!";
+  };
+
+  // flash right/wrong feedback on page
+  feedbackKey.setAttribute("class", "key");
+  setTimeout(function() {
+    feedbackKey.setAttribute("class", "key hide");
+  }, 1000);
+
+  // move to next question
+  currentQuestionIndex++;
+
+  // check if we've run out of questions
+  if (currentQuestionIndex === questions.length) {
+    quizEnd();
+  } else {
+    getQuestion();
   }
+}
 
-//end the quiz via function
-  function quizEnd() {
-    //timer stops
-    clearInterval(timerId);
 
-    //show end of quiz screen
-    var highscoreFinalEl = document.querySelector("#highscore")
-    ;
-    highscoreFinalEl.setAttribute("class", "show");
+// end quiz function 
+function quizEnd () {
+  // stop timer
+  clearInterval(timer);
 
-    // reveal final score
-    var finalScoreEl = document.querySelector("#final-score");
-    finalScoreEl.textContent = time;
+  //show end screen
+  highscoreScreen = setAttribute("class", "show");
 
-    //hide the questions
-    quizScreen.setAttribute("class", "hide");
-  }
+  // show final score 
+  var finalScore = document.querySelector("#final-score");
+  finalScore.textContent = time;
 
-//saving the high score
-function saveHighscore() {
-  //get the value of the input
-  var saved = initialsEl.value.trim();
+  // hide questions section
+  quizScreen.setAttribute("class", "hide");
+}
 
-  //verify they entered something and didn't leave it blank
-  if (saved !== "") {
-    //get the scored saved to localStorage, but if there isn't any set it to the empty array
-    var highscores = parseFloat(window.localStorage.getItem("highscores")) || [];
 
-    //format the retrieved item for the user
-    var newScore = {
-      score: time, initials: initials
-    };
 
-    //save info to localstorage
-    highscores.push(newScore);
-    window.localStorage.setItem("highscores", parseFloat.stringify(highscores));
+// function to save highscore 
+function saveHighscore () {
+  // get value of input box
+  var initials = initialsEl.value
 
-    //redirect to highscore page
-    window.location.href = "highScore.html";
+  //make sure value wasn't empty 
+  if (initials !== "") {
+    // get saved scores from localStorage, or if not any set to empty array
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+   // format new score object for current user 
+   var newScore = {
+     score:time, 
+     initials: initials
+   };
+
+   // save to localStorage 
+   highscores.push(newScore);
+   window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+   //redirect to next page
+   window.location.href = "highscore.html";
   }
 }
 
 function checkForEnter(event) {
-  // "13" is representing the enter key
   if (event.key === "Enter") {
     saveHighscore();
   }
 }
 
-//or they click to start the quiz
-startBtn.onclick = startQuiz;
+// // user clicks button to submit initials
+// initialBtn.addEventListener("click", saveHighscore())
 
+// //user clicks button to start quiz 
+// startQuizBtn.addEventListener("click", startQuiz())
 
-//the user clicks the button for initials submission
-submitBtn.onclick = saveHighscore;
+// initials.addEventListener("onkeyup", checkForEnter())
 
+// user clicks button to submit initials
+initialBtn.onclick = saveHighscore;
+  
+// user clicks button to start quiz
+startQuizBtn.onclick = startQuiz;
 
+initials.onkeyup = checkForEnter;
 
-initialsEl.onkeyup = checkForEnter;
 
 pageLoad();

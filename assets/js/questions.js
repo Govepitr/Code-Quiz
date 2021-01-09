@@ -33,11 +33,5 @@ var questions = [
     answers: ["Javascript", "terminal/bash", "for loops", "console log"],
     correct:"console log"
   },
+  
 ]
-
-
-
-
-
-
-
