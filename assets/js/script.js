@@ -115,7 +115,7 @@ function questionClick() {
     timerCountdown.textContent = time;
 
     feedbackKey.textContent = "Wrong!";
-  } if (this.value == questions[currentQuestionIndex].correct) {
+  } else if (this.value == questions[currentQuestionIndex].correct) {
     //Give extra time
     time += 10;
 
@@ -125,7 +125,7 @@ function questionClick() {
 
     // display new time on page
     timerCountdown.textContent = time;
-    feedbackKey.textcontent = "Correct!";
+    feedbackKey.textContent = "Correct!";
   };
 
   // flash right/wrong feedback on page
@@ -152,7 +152,7 @@ function quizEnd () {
   clearInterval(timer);
 
   //show end screen
-  // highscoreScreen = setAttribute("class", "show");
+  highscoreScreen.setAttribute("class", "show");
 
   // show final score 
   var finalScore = document.querySelector("#final-score");
@@ -185,8 +185,7 @@ function saveHighscore () {
    window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
    //redirect to next page
-   window.location.pathname = 'highscore.html';
-   debugger
+   window.location.href = "highscore.html";
   }
 }
 
