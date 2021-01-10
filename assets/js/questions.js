@@ -1,28 +1,28 @@
 var questions = [
   {
-    quizQuestion: "Arrays in JavaScript can be used to store _____.",
-    answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    correct:"all of the above"
+    quizQuestion: "Wanda and Pietro Maximoff(MCU) had their powers unlocked by _____.",
+    answers: ["their genetics", "having a famous father", "the power of love", "the Mind Stone"],
+    correct:"the Mind Stone"
   },
   {
-    quizQuestion: "String Values must be enclosed within ____ when being assigned to variables.",
-    answers: ["commas", "curly brackets", "quotes", "parenthesis"],
-    correct:"quotes"
+    quizQuestion: "Geralt and his trust steed ____ are well known for the Witcher book series, video game, and Netflix adaptation.",
+    answers: ["Silver", "Secretariat", "Roach", "Twilight Sparkle"],
+    correct:"Roach"
   },
   {
-    quizQuestion: "The condition in an if/else statement is enclosed with ____.",
-    answers: ["quotes", "curly brackets", "parenthesis", "square brackets"],
-    correct:"curly brackets"
+    quizQuestion: "In the upcoming Disney+ comic book adaptation She-Hulk, Jennifer Walter is related to ____.",
+    answers: ["Steve Rogers", "Bruce Banner", "Simon Williams", "Max Power"],
+    correct:"Bruce Banner"
   },
   {
-    quizQuestion: "Commonly used data types DO NOT include:",
-    answers: ["strings", "booleans", "alerts", "numbers"],
-    correct:"alerts"
+    quizQuestion: "Commonly known as the 'Merc with the mouth' Wade Wilson AKA Deadpool is cononically known to belong to what Hogwarts school?",
+    answers: ["Ravenclaw", "Griffindor", "Hufflepuff", "Slytherin"],
+    correct:"Hufflepuff"
   },
   {
-    quizQuestion: "A very useful tool for users during development and debugging for printing content to the debugger is:",
-    answers: ["Javascript", "terminal/bash", "for loops", "console log"],
-    correct:"console log"
+    quizQuestion: "Which was the very first Marvel live action movie?",
+    answers: ["Iron Man", "Fantastic Four", "Captain America: The First Avenger", "Howard the Duck"],
+    correct:"Howard the Duck"
   },
   
 ]

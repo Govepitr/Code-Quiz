@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Quiz</title>
+  <title>Coded Quiz</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css" />
@@ -14,7 +14,7 @@
   <header>
     <nav class="nav-wrapper">
       <div class="hi-score">
-        <h3 id="view-highscores" class="hi-score-title" onclick="printHighscores()">View High Scores</h3>
+        <h3 id="view-highscores" class="hi-score-title" onclick="printHighscores()">Visit the Hall of Legends</h3>
       </div>
       <div>
         <h3 class="time">Time: <span id="time">0</span></h3>
@@ -27,13 +27,13 @@
       <!-- Quiz Question & Quiz Start Button (will disable this once quiz starts and use bottom section)-->
       <div id="start-quiz" class="start-quiz" >
         <h1>
-          Coding Quiz Challenge
+          Pop Culture Quiz Challenge
         </h1>
         <!-- Opening page info -->
         <p>
-          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds! Correct answers will increase your score/time by 10 seconds!
+          Test your nerdy pop-culture knowledge with these questions, all within the time limit. Prove you're not "with it" and get an incorrect answer, well you will lose 10 seconds! Utilize that lexicon of useless knowledge and answer correctly and you gain 10 seconds!
         </p>
-        <button id="start-quiz-btn" class="startbtn">Start Quiz</button>
+        <button id="start-quiz-btn" class="startbtn">Take the Red Pill</button>
       </div>
 
       <!-- Quiz Questions after it starts Quiz Answer Buttons -->
@@ -53,20 +53,20 @@
 
       <!-- High Score End Screen -->
       <div class="highscore" id="highscore">
-        <h2>All done!</h2>
+        <h2>Well it's over, let's see how you did.</h2>
         <h3>Your final score is <span id="final-score">0</span></h3>
         <label for="initials-area">Enter initials:</label>
         <input type="text" name="initials-area" maxlength="4" id="initials">
-        <button id="initials-submit-button" type="submit" class="btn">Submit</button>
+        <button id="initials-submit-button" type="submit" class="btn">Jack in to the Matrix</button>
       </div>
 
       <!-- Highscore Display Screen -->
       <div id="highscore-display">
         <div id="scores">
-          <h2>Highscores:</h2>
+          <h2>Legends of yore:</h2>
           <ol id="display-scores"></ol>
-          <a href="./index.html"><button id="return-btn" class="startbtn">Play Again</button></a>
-          <button id="clear-btn" class="startbtn">Clear Highscores</button>
+          <a href="./index.html"><button id="return-btn" class="startbtn">Cast Time Warp?</button></a>
+          <button id="clear-btn" class="startbtn">Use the Time Stone</button>
         </div>
       </div>
 

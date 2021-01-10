@@ -1,7 +1,7 @@
 :root {
-  --primary-color: rgb(100, 6, 177);
-  --secondary-color: rgb(207, 99, 240);
-  --background-color: rgb(255, 255, 255);
+  --primary-color: rgb(17, 6, 177);
+  --secondary-color: rgb(172, 23, 23);
+  --background-color: rgb(157, 202, 204);
   --accent-color: rgba(161, 159, 159, 0.794);
   --black-color: rgb(2, 1, 1); 
 }
@@ -76,7 +76,6 @@ div .btn:hover {
   background-color: var(--secondary-color);
 }
 
-/* key is not working with an id */
 div, p, .key {
 margin-top:5px;
 }
@@ -94,12 +93,4 @@ border-top: 1px solid var(--accent-color);
 
 .show {
   display: block;
-}
-
-.vishidden {
-  visibility: hidden;
-}
-
-.visdisplay {
-  visibility: display;
 }

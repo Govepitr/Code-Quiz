@@ -123,7 +123,7 @@ function questionClick() {
     // display new time on page
     timerCountdown.textContent = time;
 
-    feedbackKey.textContent = "Wrong!";
+    feedbackKey.textContent = "Nah man, that's wrong!";
   } if (this.value == questions[currentQuestionIndex].correct) {
     //Give extra time
     time += 10;
@@ -134,7 +134,7 @@ function questionClick() {
 
     // display new time on page
     timerCountdown.textContent = time;
-    feedbackKey.textContent = "Correct!";
+    feedbackKey.textContent = "Vindicaaaatiooooon!";
   };
 
   // flash right/wrong feedback on page
